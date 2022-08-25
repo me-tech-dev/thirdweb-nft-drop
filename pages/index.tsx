@@ -18,7 +18,7 @@ import { useState } from 'react';
 import styles from '../styles/Theme.module.css';
 
 // Put Your NFT Drop Contract address from the dashboard here
-const myNftDropContractAddress = '0x322067594DBCE69A9a9711BC393440aA5e3Aaca1';
+const myNftDropContractAddress = process.env.myNftDropContractAddress;
 
 const Home: NextPage = () => {
   const nftDrop = useNFTDrop(myNftDropContractAddress);
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
 
   // Load contract metadata
   const { data: contractMetadata } = useContractMetadata(
-    myNftDropContractAddress,
+    myNftDropContractAddress
   );
 
   // Load claimed supply and unclaimed supply
@@ -56,7 +56,7 @@ const Home: NextPage = () => {
   // Check price
   const price = parseUnits(
     activeClaimCondition?.currencyMetadata.displayValue || '0',
-    activeClaimCondition?.currencyMetadata.decimals,
+    activeClaimCondition?.currencyMetadata.decimals
   );
 
   // Multiply depending on quantity
@@ -84,7 +84,7 @@ const Home: NextPage = () => {
           console.error(err);
           alert(err?.message || 'Something went wrong');
         },
-      },
+      }
     );
   };
 
@@ -160,8 +160,7 @@ const Home: NextPage = () => {
                     disabled={
                       quantity >=
                       parseInt(
-                        activeClaimCondition?.quantityLimitPerTransaction ||
-                          '0',
+                        activeClaimCondition?.quantityLimitPerTransaction || '0'
                       )
                     }
                   >
@@ -182,7 +181,7 @@ const Home: NextPage = () => {
                           : activeClaimCondition?.currencyMetadata.displayValue
                           ? ` (${formatUnits(
                               priceToMint,
-                              activeClaimCondition.currencyMetadata.decimals,
+                              activeClaimCondition.currencyMetadata.decimals
                             )} ${
                               activeClaimCondition?.currencyMetadata.symbol
                             })`
