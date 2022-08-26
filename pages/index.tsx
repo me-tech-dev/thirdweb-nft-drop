@@ -142,7 +142,7 @@ const Home: NextPage = () => {
               </div>
             ) : (
               <>
-                <p>Quantity</p>
+                {/* <p>Quantity</p>
                 <div className={styles.quantityContainer}>
                   <button
                     className={`${styles.quantityControlButton}`}
@@ -166,7 +166,7 @@ const Home: NextPage = () => {
                   >
                     +
                   </button>
-                </div>
+                </div> */}
 
                 <button
                   className={`${styles.mainButton} ${styles.spacerTop} ${styles.spacerBottom}`}

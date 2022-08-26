@@ -1,13 +1,13 @@
-import type { AppProps } from "next/app";
-import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
-import "../styles/globals.css";
-import Head from "next/head";
-import ThirdwebGuideFooter from "../components/GitHubLink";
+import type { AppProps } from 'next/app';
+import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
+import Head from 'next/head';
+
+import '../styles/globals.css';
 
 // This is the chainId your dApp will work on.
 const activeChainId = ChainId.Mumbai;
 
-function MyApp({ Component, pageProps }: AppProps) {
+function Main({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider desiredChainId={activeChainId}>
       <Head>
@@ -23,9 +23,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Component {...pageProps} />
-      <ThirdwebGuideFooter />
     </ThirdwebProvider>
   );
 }
 
-export default MyApp;
+export default Main;
